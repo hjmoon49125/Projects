@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RandFood</string>
+
+    <!-- Main Activity -->
+    <string name="RandFood">隨機食物</string>
+    <string name="RandText">隨機轉盤</string>
+
+
+
+</resources>
