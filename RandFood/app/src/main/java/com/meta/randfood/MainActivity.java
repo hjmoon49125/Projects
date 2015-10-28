@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String ACTIVITY_TAG="LogDemo";
 
     private FoodGenerate foodGenerate;
+    public ReadnWrite readnWrite;
 
     private Button btn_rand;
     private TextView txt_rand;
@@ -41,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void randFood() {
         int foodID = foodGenerate.Generate();
-        txt_rand.setText( foodID + " + " + FoodProcess.getInstance().getFoodData(foodID).getName());
+        txt_rand.setText(Mgr_Food.getInstance().getFoodData(foodID).getName());
 
-        Log.i(ACTIVITY_TAG, foodID + " + " + FoodProcess.getInstance().getFoodData(foodID).getName());
+        Log.i(ACTIVITY_TAG, foodID + " + " + Mgr_Food.getInstance().getFoodData(foodID).getName());
     }
 
     @Override
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        readnWrite.initializeInstance(getApplicationContext());
         foodGenerate = new FoodGenerate();
 
         processView();
