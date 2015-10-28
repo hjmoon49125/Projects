@@ -4,7 +4,11 @@
     <!-- Main Activity -->
     <string name="RandFood">隨機食物</string>
     <string name="RandText">隨機轉盤</string>
+    <string name="title_activity_main_menu">MainMenuActivity</string>
 
+    <!-- Menu Activity -->
+    <string name="Menu_Rend">隨機轉盤</string>
+    <string name="Menu_Mod">新增食物</string>
 
 
 </resources>

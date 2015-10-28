@@ -7,23 +7,25 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.util.Log;
 
-import Process.*;
+import Process.Mgr_Food;
+import Process.FoodGenerate;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String ACTIVITY_TAG="LogDemo";
 
     private FoodGenerate foodGenerate;
-    public ReadnWrite readnWrite;
 
     private Button btn_rand;
     private TextView txt_rand;
 
+    // UI 註冊
     private void processView() {
         btn_rand = (Button) findViewById(R.id.btn_rand);
         txt_rand = (TextView) findViewById(R.id.txt_rand);
     }
 
+    // UI 事件
     private void processControllers() {
         // Listener
         View.OnClickListener listener = new View.OnClickListener(){
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btn_rand.setOnClickListener(listener);
     }
 
+    // 隨機轉盤
     private void randFood() {
         int foodID = foodGenerate.Generate();
         txt_rand.setText(Mgr_Food.getInstance().getFoodData(foodID).getName());
@@ -52,14 +55,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        readnWrite.initializeInstance(getApplicationContext());
         foodGenerate = new FoodGenerate();
 
         processView();
         processControllers();
-
     }
-
-
-
 }

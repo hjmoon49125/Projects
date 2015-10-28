@@ -56,6 +56,4 @@ public class FoodGenerate {
         return  StatsArr[rand];
     }
 
-
-
 }
