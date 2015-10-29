@@ -79,6 +79,17 @@ public class Mgr_Food {
         saveFoodData();
     }
 
+    // 檢查食物名稱重複
+    public boolean checkName(String value) {
+        for(FoodData food : getoFoodArray()) {
+            if(value.equals(food.getName())) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     // 取得Food List
     public List<FoodData> getoFoodArray(){
         return oFoodArray;
