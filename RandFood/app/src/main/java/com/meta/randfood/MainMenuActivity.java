@@ -28,32 +28,32 @@ public class MainMenuActivity extends AppCompatActivity {
 
     // UI 事件
     private void processControllers() {
-        // Listener
-        View.OnClickListener listener = new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Button btn = (Button) v;
-
-                if(btn == btn_MenuRend) {
-                    MenuRand();
-                } else if(btn == btn_MenuMod){
-                    MenuMod();
-                }
-            }
-        };
-
         btn_MenuRend.setOnClickListener(listener);
         btn_MenuMod.setOnClickListener(listener);
     }
 
+    // 按鈕 Listener 事件
+    View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Button btn = (Button) v;
+
+            if (btn == btn_MenuRend) {
+                MenuRand();
+            } else if (btn == btn_MenuMod) {
+                MenuMod();
+            }
+        }
+    };
+
     // 隨機食物 UI
-    private void MenuRand(){
+    private void MenuRand() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
     // 新增資料 UI
-    private void MenuMod(){
+    private void MenuMod() {
         Intent intent = new Intent(this, ModActivity.class);
         startActivity(intent);
     }

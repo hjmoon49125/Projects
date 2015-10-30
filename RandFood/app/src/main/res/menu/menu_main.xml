@@ -4,10 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ModActivity" >
 
-    <!-- Settings, should always be in the overflow -->
+    <item
+        android:id="@+id/action_del"
+        android:icon="@android:drawable/ic_menu_delete"
+        app:showAsAction="ifRoom|withText"
+        android:orderInCategory="90"
+        android:title="@string/act_del">
+    </item>
+
+    <item
+        android:id="@+id/action_mod"
+        android:icon="@android:drawable/ic_menu_edit"
+        app:showAsAction="ifRoom|withText"
+        android:orderInCategory="80"
+        android:title="@string/act_mod">
+    </item>
+
     <item android:id="@+id/action_add"
+        android:icon="@android:drawable/ic_menu_add"
         android:title="@string/act_add"
         android:orderInCategory="100"
         app:showAsAction="always"/>
+
 
 </menu>

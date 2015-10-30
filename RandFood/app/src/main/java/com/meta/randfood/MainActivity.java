@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import Data.FoodData;
 import Process.Mgr_Food;
 import Process.FoodGenerate;
 
@@ -26,29 +25,29 @@ public class MainActivity extends AppCompatActivity {
 
     // UI 事件
     private void processControllers() {
-        // Listener
-        View.OnClickListener listener = new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Button btn = (Button) v;
-
-                if(btn == btn_rand) {
-                    randFood();
-                }
-            }
-        };
-
         btn_rand.setOnClickListener(listener);
     }
 
+    // 按鈕 Listener 事件
+    View.OnClickListener listener = new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+            Button btn = (Button) v;
+
+            if(btn == btn_rand) {
+                randFood();
+            }
+        }
+    };
+
     // 隨機轉盤
     private void randFood() {
-        //int foodID = foodGenerate.Generate();
-        //txt_rand.setText(Mgr_Food.getInstance().getFoodData(foodID).getName());
-        mHandler.post(runnable);
+        int foodID = foodGenerate.Generate();
+        txt_rand.setText(Mgr_Food.getInstance().getFoodData(foodID).getName());
+        //mHandler.post(runnable);
     }
 
-    Handler mHandler = new Handler();
+    /*Handler mHandler = new Handler();
     int count = 0;
 
     final Runnable runnable = new Runnable() {
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             count ++;
             mHandler.postDelayed(runnable, 10);
         }
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

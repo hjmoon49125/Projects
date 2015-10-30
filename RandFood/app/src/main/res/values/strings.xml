@@ -13,8 +13,13 @@
     <!-- Mod Activity -->
     <string name="btn_AddFood">新增</string>
     <string name="AddFood">新增食物</string>
+    <string name="confirm_del">是否修改紀錄</string>
+    <string name="confirm_yes">是</string>
+    <string name="confirm_no">否</string>
 
-    <!-- Mod Activity -->
+    <!-- Action Bar -->
     <string name="act_add">新增</string>
+    <string name="act_del">刪除</string>
+    <string name="act_mod">修改</string>
 
 </resources>

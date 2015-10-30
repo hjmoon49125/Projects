@@ -1,7 +1,10 @@
 package com.meta.randfood;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,6 +30,7 @@ public class ModActivity extends AppCompatActivity {
 
     private ListView lv_food;
     private FoodItemAdapter adapter;
+    int itemSelect;
     /*private Button btn_addfood;
     private EditText editText_food;
     private RatingBar ratingBar_food;*/
@@ -42,14 +46,6 @@ public class ModActivity extends AppCompatActivity {
 
     // UI 事件
     private void processControllers() {
-        // Listener
-        AdapterView.OnItemClickListener viewListener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                view.setSelected(true);
-                Constants.DebugLog("Items select : " + position);
-            }
-        };
         /*View.OnClickListener listener = new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -68,6 +64,16 @@ public class ModActivity extends AppCompatActivity {
         lv_food.setOnItemClickListener(viewListener);
         //btn_addfood.setOnClickListener(listener);
     }
+
+    // List View Listener 事件註冊
+    AdapterView.OnItemClickListener viewListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            view.setSelected(true);
+            itemSelect = position;
+        }
+    };
+
 
     /*private void addFood(){
         String foodName = editText_food.getText().toString();
@@ -93,11 +99,40 @@ public class ModActivity extends AppCompatActivity {
                 Constants.DebugLog("Action Add Clicked");
                 return true;
 
+            case R.id.action_del:
+                DeleteData();
+                return true;
+
+            case R.id.action_mod:
+                // User chose the "Settings" item, show the app settings UI...
+                Constants.DebugLog("Action mod Clicked");
+                return true;
+
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    // 刪除 彈出視窗
+    private void DeleteData() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage(R.string.confirm_del)
+                .setPositiveButton(R.string.confirm_yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Mgr_Food.getInstance().delFoodData(itemSelect);
+                        adapter.notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton(R.string.confirm_no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+        AlertDialog about_dialog = builder.create();
+        about_dialog.show();
     }
 
     // 產生自訂的 Action Bar
