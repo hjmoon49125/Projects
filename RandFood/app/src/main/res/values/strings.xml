@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RandFood</string>
+    <string name="app_name">食物轉盤</string>
 
     <!-- Main Activity -->
     <string name="RandFood">隨機食物</string>
@@ -13,5 +13,8 @@
     <!-- Mod Activity -->
     <string name="btn_AddFood">新增</string>
     <string name="AddFood">新增食物</string>
+
+    <!-- Mod Activity -->
+    <string name="act_add">新增</string>
 
 </resources>
