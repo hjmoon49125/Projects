@@ -10,28 +10,54 @@
     <EditText
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:id="@+id/editText"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/ediTxt_addFood"
+        android:hint="@string/txt_addFood"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/rb_add"
+        android:layout_alignStart="@+id/rb_add"
+        android:layout_alignRight="@+id/rb_add"
+        android:layout_alignEnd="@+id/rb_add" />
 
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ratingBar2"
-        android:layout_below="@+id/editText"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
+        android:id="@+id/rb_add"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:stepSize="1"
+        android:rating="1" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/AddFood"
+        android:text="@string/txt_addFood"
         android:id="@+id/textView"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:textSize="20dp"
         android:layout_alignParentTop="true"
-        android:textSize="30dp" />
+        android:layout_alignLeft="@+id/ediTxt_addFood"
+        android:layout_alignStart="@+id/ediTxt_addFood"
+        android:layout_marginTop="63dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/txt_rate"
+        android:id="@+id/textView2"
+        android:textSize="20dp"
+        android:layout_below="@+id/ediTxt_addFood"
+        android:layout_alignLeft="@+id/ediTxt_addFood"
+        android:layout_alignStart="@+id/ediTxt_addFood"
+        android:layout_marginTop="39dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:text="@string/btn_addFood"
+        android:id="@+id/btn_addFood"
+        android:layout_marginTop="52dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/rb_add"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
