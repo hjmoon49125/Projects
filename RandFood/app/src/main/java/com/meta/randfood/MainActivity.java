@@ -73,12 +73,6 @@ public class MainActivity extends AppCompatActivity {
                         btn_rand.setClickable(true);
                     }
                 };
-                /*parameterFunc func2 = () -> {
-                    int foodID = foodGenerate.Generate();
-                    txt_rand.setText(Mgr_Food.getInstance().getFoodData(foodID).getName());
-                    txt_rand.setTextColor(Color.RED);
-                    btn_rand.setClickable(true);
-                }*/
                 TimerMethod(2000, 200, func2);
                 break;
         }

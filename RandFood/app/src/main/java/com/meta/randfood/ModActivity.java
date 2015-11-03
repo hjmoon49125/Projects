@@ -115,10 +115,18 @@ public class ModActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    // 更新 List 界面
+    //Override func  @see refreshAdapter(int viewToPos)
     public void refreshAdapter() {
+        refreshAdapter(0);
+    }
+
+    // 更新 List 界面
+    public void refreshAdapter(int viewToPos) {
         adapter.notifyDataSetChanged();
-        lv_food.smoothScrollToPosition(lv_food.getCount());
+        if(viewToPos == 0)
+            lv_food.smoothScrollToPosition(lv_food.getCount());
+        else
+            lv_food.smoothScrollToPosition(viewToPos);
     }
 
     // 收到更新的回傳要求 @see /Constant/ADD_REQUEST
@@ -131,7 +139,7 @@ public class ModActivity extends AppCompatActivity {
                 break;
             case Constants.MOD_REQUEST:
                 if(resultCode == RESULT_OK)
-                    refreshAdapter();
+                    refreshAdapter(itemSelect);
                 break;
         }
     }

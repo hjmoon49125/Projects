@@ -102,7 +102,6 @@ public class AddItemActivity extends AppCompatActivity {
         Mgr_Food.getInstance().modFoodData(foodPos,food);
 
         finish();
-
     }
 
     // 結束時回傳更新指令
