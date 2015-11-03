@@ -12,6 +12,7 @@
 
     <!-- Mod Activity -->
     <string name="btn_addFood">新增</string>
+    <string name="btn_modFood">修改</string>
     <string name="txt_addFood">新增食物</string>
     <string name="txt_rate">評價</string>
     <string name="confirm_del">是否修改紀錄</string>

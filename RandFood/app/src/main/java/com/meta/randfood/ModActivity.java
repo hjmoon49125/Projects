@@ -5,13 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.google.gson.Gson;
 
 import Data.Constants;
 import Process.Mgr_Food;
@@ -53,6 +54,7 @@ public class ModActivity extends AppCompatActivity {
             case R.id.action_add:
                 // 開啟更新界面 並等待其回傳結果
                 Intent intent = new Intent(this, AddItemActivity.class);
+                intent.setAction(String.format("%d", Constants.ADD_REQUEST));
                 startActivityForResult(intent, Constants.ADD_REQUEST);
 
                 return true;
@@ -62,8 +64,17 @@ public class ModActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_mod:
-                // User chose the "Settings" item, show the app settings UI...
-                Constants.DebugLog("Action mod Clicked");
+                // 把 Class 轉成 JSON 並用字串方式傳送
+                Intent intent_Mod = new Intent(this, AddItemActivity.class);
+                intent_Mod.setAction(String.format("%d", Constants.MOD_REQUEST));
+                Gson gson = new Gson();
+                String value = gson.toJson(Mgr_Food.getInstance().getFoodData(itemSelect));
+                Bundle bundle = new Bundle();
+                bundle.putInt(Constants.MOD_KEY, itemSelect);
+                bundle.putString(Constants.MOD_Value, value);
+                intent_Mod.putExtras(bundle);
+                startActivityForResult(intent_Mod, Constants.MOD_REQUEST);
+
                 return true;
 
             default:
@@ -113,8 +124,15 @@ public class ModActivity extends AppCompatActivity {
     // 收到更新的回傳要求 @see /Constant/ADD_REQUEST
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == Constants.ADD_REQUEST) {
-            refreshAdapter();
+        switch(requestCode) {
+            case Constants.ADD_REQUEST:
+                if(resultCode == RESULT_OK)
+                    refreshAdapter();
+                break;
+            case Constants.MOD_REQUEST:
+                if(resultCode == RESULT_OK)
+                    refreshAdapter();
+                break;
         }
     }
 
